@@ -1,0 +1,32 @@
+import React from 'react';
+import { Checkbox } from '../../component-library';
+import { NetworkListItem } from '.';
+
+export default {
+  title: 'Components/Multichain/NetworkListItem',
+  component: NetworkListItem,
+  argTypes: {
+    name: { control: 'text' },
+    selected: { control: 'boolean' },
+    onClick: { action: 'onClick' },
+    onDeleteClick: { action: 'onDeleteClick' },
+    iconSrc:{ action:'text'},
+  },
+  args:{ name:'Ethereum',iconSrc:'',selected:false},
+};
+
+const Wrapper = (args) => <div style={{ width:'328px',border:'1px solid var(--color-border-muted)' }}><NetworkListItem {...args} /></div>;
+
+export const DefaultStory = (args) => <Wrapper {...args} />;
+
+export const IconStory = (args) => <Wrapper {...args} />;
+IconStory.args={ iconSrc:'./images/pol-token.svg',name:'Polygon' };
+
+export const SelectedStory = (args) => <Wrapper {...args} />;
+SelectedStory.args={ selected:true };
+
+export const WithAccessoryStory = (args) => <Wrapper {... args}/>;
+WithAccessoryStory.args=({ startAccessory:<Checkbox /> });
+
+export const ChaosStory=( args)=> < Wrapper{... args}/>;
+ChaosStory.args=({ name:"This is a super long network name that should be ellipsized",selected:true});
